@@ -9,4 +9,6 @@
 #  updated_at      :datetime         not null
 #
 class TemperatureSample < ApplicationRecord
+  validates :value, :event_timestamp, presence: true
+  validates :value, numericality: true
 end
