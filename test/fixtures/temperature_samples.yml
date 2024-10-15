@@ -1,0 +1,18 @@
+# == Schema Information
+#
+# Table name: temperature_samples
+#
+#  id              :integer          not null, primary key
+#  value           :float
+#  event_timestamp :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+one:
+  value: 25.5
+  event_timestamp: 2024-10-15 22:10:09
+
+two:
+  value: 24.2
+  event_timestamp: 2024-10-15 23:10:09

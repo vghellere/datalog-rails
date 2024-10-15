@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_14_213249) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_15_221009) do
+  create_table "temperature_samples", force: :cascade do |t|
+    t.float "value"
+    t.datetime "event_timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_timestamp"], name: "index_temperature_samples_on_event_timestamp"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
