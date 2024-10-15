@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+User.find_or_create_by!(email: "test@test.com") do |user|
+  user.password = "test"
+end
+
+# seeds a day worth of TemperaturesSamples, one sample every 5 minutes
+event_timestamp = DateTime.now - 1.days
+288.times do
+  TemperatureSample.create!(value: rand(20.0..35.0), event_timestamp:)
+  event_timestamp += 5.minutes
+end
