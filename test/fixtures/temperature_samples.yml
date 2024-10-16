@@ -9,10 +9,22 @@
 #  updated_at      :datetime         not null
 #
 
-one:
+temperature_sample_1:
   value: 25.5
-  event_timestamp: 2024-10-15 22:10:09
+  event_timestamp: 2024-10-15 22:10:00
 
-two:
+temperature_sample_2:
   value: 24.2
-  event_timestamp: 2024-10-15 23:10:09
+  event_timestamp: 2024-10-15 22:15:00
+
+temperature_sample_3:
+  value: 23.6
+  event_timestamp: 2024-10-15 22:20:00
+
+temperature_sample_4:
+  value: 23.2
+  event_timestamp: 2024-10-15 22:25:00
+
+temperature_sample_5:
+  value: 22.5
+  event_timestamp: 2024-10-15 22:30:00
