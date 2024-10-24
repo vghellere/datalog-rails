@@ -1,24 +1,36 @@
-# README
+# Datalogger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is made of three parts:
 
-Things you may want to cover:
+* A Rails `back-end` with `GraphQL` (this repo) that stores temperature data
+* A [ESP32 Logging](https://github.com/vghellere/datalogger-esp32) board with a temperature sensor that stores temperature data
+* A ReactNative (Expo) [project](https://github.com/vghellere/datalog-reactnative) that reads the temperature data from the ESP32 via Bluetooth and sends it to the `back-end`
 
-* Ruby version
+# Workflow
 
-* System dependencies
+* the ESP32 reads the temperature data from the sensor and stores it in a memory buffer
+* the ReactNative app connects to the ESP32 via Bluetooth and
+  * syncs the ESP32 internal RTC (Real Time Clock)
+  * gets the samples (timestamp/temperature) stored in the ESP32
+  * sends the data to the `back-end` Rails app via `GraphQL`
 
-* Configuration
+Both the ReactNative and the Rails app have a Dashboard for viewing the Temperature Data
 
-* Database creation
+# Screenshots
 
-* Database initialization
+<img src="docs/app_screenshot_1.jpg" width="250">
+<img src="docs/app_screenshot_2.jpg" width="250">
+<img src="docs/app_screenshot_3.jpg" width="250">
 
-* How to run the test suite
+# Todo / Points of improvement / Future work
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rails:
+  * GraphQL: add authentication and rate limiting
+  * Add a chart to the Dashboard
+* ReactNative:
+  * Add tests
+  * Add authentication
+  * Improve error handling
+* ESP32:
+  * Implement a FIFO for the sample buffer (it's currently using a LIFO)
+  * Use the [standardized](https://github.com/sputnikdev/bluetooth-gatt-parser/blob/master/src/main/resources/gatt/characteristic/org.bluetooth.characteristic.temperature_measurement.xml) `org.bluetooth.characteristic.temperature_measurement` BLE Type to communicate the `timestamp/temperature` data
