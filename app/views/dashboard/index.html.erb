@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "dashboard" %>
+<h1>Dashboard - Temperature History</h1>
+<table id="data_table">
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Temperature</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% last_date = "" %>    
+    <% @temperature_samples.each do |temp_sample| %>
+      <tr>
+        <%
+            date_string = temp_sample.event_timestamp.strftime("%b %d, %Y")
+
+            date_time = ""
+            if last_date != date_string
+                last_date = date_string
+                date_time = "#{date_string} "
+            end
+
+            date_time += temp_sample.event_timestamp.strftime("%H:%M")
+        %>
+        <td><%= date_time %></td>
+        <td><%= "#{'%.2f' % temp_sample.value}" %> °C</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
