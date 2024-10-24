@@ -2,7 +2,7 @@ require "test_helper"
 
 class DashboardControllerTest < ActionDispatch::IntegrationTest
   test "should redirect when not logged in index" do
-    get dashboard_index_url
+    get dashboard_path
     assert_response :redirect
   end
 
@@ -10,7 +10,7 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     user_1 = users(:user_1)
     post sessions_path, params: { email: user_1.email, password: "testpassword" }
 
-    get dashboard_index_url
+    get dashboard_path
     assert_response :success
   end
 end
