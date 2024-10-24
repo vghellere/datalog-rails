@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
 
   get "login", to: "sessions#new", as: "login"
   get "logout", to: "sessions#destroy", as: "logout"
+
+  get "dashboard", to: "dashboard#index"
 
   resources :users
   resources :sessions
