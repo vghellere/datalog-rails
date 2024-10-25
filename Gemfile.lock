@@ -110,7 +110,7 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.1)
       railties
-    graphql (2.3.18)
+    graphql (2.3.19)
       base64
       fiber-storage
     i18n (1.14.6)
@@ -321,7 +321,7 @@ DEPENDENCIES
   capybara
   debug
   graphiql-rails
-  graphql (~> 2.3.18)
+  graphql (~> 2.3.19)
   importmap-rails
   pry (~> 0.14.2)
   pry-nav
