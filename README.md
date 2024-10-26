@@ -27,11 +27,15 @@ Both the ReactNative and the Rails app have a Dashboard for viewing the Temperat
 * Rails:
   * GraphQL: add authentication and rate limiting
   * Add a chart to the Dashboard
+  * Add `device` model and associate `user -> device -> temperatureSample` 
+  * Make `temperatureSample` more generic to represent any kind of measurement, not only temperature
 * ReactNative:
   * Add tests
   * Add authentication
+  * Handle the case where we fetch the data from ESP32 but the RN app can't send the data to the back-end. Right now the data is lost
   * Improve error handling
 * ESP32:
   * Implement a FIFO for the sample buffer (it's currently using a LIFO)
   * Make the ESP32 go into deep sleep in between readings and wake up periodically to sync the data
   * Use the [standardized](https://github.com/sputnikdev/bluetooth-gatt-parser/blob/master/src/main/resources/gatt/characteristic/org.bluetooth.characteristic.temperature_measurement.xml) `org.bluetooth.characteristic.temperature_measurement` BLE Type to communicate the `timestamp/temperature` data
+  * Implement device ID and firmware version
